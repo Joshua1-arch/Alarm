@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" href="alarm.css">
+
+<body >
+
+<center><div id="container">
+	<br>	<br>	
+<div class="yes" id="res"></div> <br>	<br>	
+		
+	<input type="number"  id="myalarm"  class="what" name="">  	
+	<input type="number"   id="myal" class="what"  name="">  <br>	<br>	
+
+	
+	<button class="butt" onclick="set()">Set</button>
+	<button class="butt"onclick="cancel()">Stop</button>
+	<button class="butt"onclick="snooze()">Snooze</button>
+
+
+<div id="demo"></div>
+</center>
+</div>
+
+
+
+<script type="text/javascript">
+	 var audio = new Audio('dancing_in_the_rain-freemobi.ogg');
+ function time() {
+  
+		 anything = new Date();
+		 a =anything.getHours();
+		 b =anything.getMinutes();
+		 c=anything.getSeconds();
+		 d = a+':' + b +':'+c;
+		res.innerHTML=d;
+		setTimeout( time, 1000)
+	}
+		time();
+		function set() {
+    setmytime = setTimeout(set, 1000)
+    if ((myalarm.value == anything.getHours() && myal.value ==b) ) {
+		         audio.play();
+
+    }
+    else if ((myalarm.value <= anything.getHours()) &&(myal.value <= anything.getMinutes())) {
+     demo.innerHTML="the time is past";
+       
+   		myalarm.value= ""
+   		myal.value= ""
+    }  
+}
+
+	// function stop(){
+		
+		//  alert("ok")
+	// var sign=['+', '-','*','/']
+	// var result =prompt( rand1 + '+' + rand2);
+	// var finalresult= ( rand1 + rand2)
+	// 	if(result ==  rand1 + rand2){
+	// 		audio.paused();
+	// 	}
+	// 	else {
+	// 		audio.play();
+	// 	}
+
+	
+  		function snooze() {
+  			 audio.pause();
+      myal.value= parseInt(myal.value) + 5 ;
+      if (myal.value>59) {
+        myal.value++;
+        myal.value=00;
+  		}
+  	}
+
+	  function cancel(){
+		  
+			 rand1= Math.floor(Math.random()*10)+1;
+		 
+		  rand2=Math.floor(Math.random()*10)+1;
+		  var sign=[]
+		  var result=prompt( rand1 + '+'+ rand2);
+		  var finalresult= rand1 + rand2;
+		  if (result == rand1 + rand2)
+		  {
+			  audio.pause();
+			  clearInterval(setmytime);
+			  audio.pause();
+		  }
+		else{
+			audio.play();
+		}
+	  }
+</script>
+</body>
+</html>
